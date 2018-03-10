@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, IntegerField, SelectField
+from wtforms import StringField, PasswordField, IntegerField, SelectField, TextAreaField
 from wtforms.validators import InputRequired, Required
+from wtforms import validators, ValidationError
 from flask_wtf.file import FileField, FileAllowed, FileRequired 
 
 class LoginForm(FlaskForm):
@@ -9,13 +10,12 @@ class LoginForm(FlaskForm):
     
     
 class CreateUserForm(FlaskForm):
-    username = StringField('Username', validators=[InputRequired()])
     firstname = StringField('Firstname', validators=[InputRequired()])
     lastname = StringField('Lastname', validators=[InputRequired()])
-    age = IntegerField('Age', validators=[Required()])
-    gender = SelectField('Gender', choices=[('Male','Male'), ('Female', 'Female')], validators=[Required()])
-    bio = StringField('Bio', validators=[InputRequired()])
-    password = PasswordField('Password', validators=[InputRequired()])
-    image = FileField('Image',validators = [FileRequired(),FileAllowed(['jpg, png'])])
+    gender = SelectField('Gender', choices = [('S','Select Gender'),('M','Male'),('F','Female')])
+    email = StringField("Email",[validators.Required("(Required)"), validators.Email("(Required)")])
+    location = StringField("Location",[validators.Required("(Required)")])
+    bio = TextAreaField('Bio', validators=[InputRequired()])
+    image = FileField('Profile Picture', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'Images only!'])])
     
     

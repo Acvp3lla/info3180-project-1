@@ -4,11 +4,10 @@ class UserProfile(db.Model):
     uid = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(80))
     lastname = db.Column(db.String(80))
-    age= db.Column(db.Integer)
     gender=db.Column(db.String(6))
-    bio=db.Column(db.String(80))
-    username = db.Column(db.String(80), unique=True)
-    password = db.Column(db.String(255))
+    email = db.Column(db.String(80))
+    location = db.Column(db.String(80))
+    bio=db.Column(db.String(255))
     image=db.Column(db.LargeBinary)
     created_on=db.Column(db.DateTime)
     
@@ -16,11 +15,10 @@ class UserProfile(db.Model):
         self.uid=uid
         self.firstname=firstname
         self.lastname=lastname
-        self.age=age
         self.gender=gender
+        self.email=email
+        self.location=location
         self.bio=bio
-        self.username=username
-        self.password=password
         self.image=image
         self.created_on=created_on
         
