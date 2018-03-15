@@ -7,7 +7,8 @@
     <img src="{{data['image']}}" height="250" width="250" alt = "profile picture">
   </div>
   <div class="col2">
-      <div >
+      <div class="user">
+        <img class="img-responsive" src=" {{url_for('static', filename='id.png')}}" height="24" width="24" alt = "id icon" >
         {{data['firstname']}}
         {{data['lastname']}}
       </div>

@@ -98,7 +98,7 @@ hr{
 .name{
 	margin-top: 20px;
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: 1fr 10fr;
 	position: relative;
 	float: left;
 }
@@ -121,6 +121,13 @@ hr{
 .email{
 	display: grid;
 	grid-template-columns: repeat(2,.06fr);
+	position: relative;
+	float: left;
+}
+
+.user{
+	display: grid;
+	grid-template-columns: 1fr 24fr;
 	position: relative;
 	float: left;
 }
