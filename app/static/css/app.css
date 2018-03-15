@@ -11,6 +11,16 @@ hr{
     margin: 1em 0;
     padding: 0; 
 }
+
+.outside{
+	position: relative;
+	margin:auto;
+	background-color: #f2f4f7;
+	width : 540px;
+	height: 650px;
+	border-radius: 5px;
+}
+
 .cont{
     position: relative;
 	border-radius: 5px;
