@@ -37,12 +37,13 @@ hr{
 
 .outer{
 	display: grid;
-	grid-template-columns: 40% 60%;
+	grid-template-columns: 1fr 1fr;
     position: relative;
 	border-radius: 5px;
 	border-width: 5px;
 	border-color: rgb(0, 0, 0, 0.8);
 	border-style: solid;
+	background-color: #eaf9ff;
 	width : 600px;
 	height: auto;
 }
@@ -67,12 +68,12 @@ hr{
 }
 
 .side1{
-	background-color: #eaf9ff;
+	display: grid;
+	margin: auto;
 }
 
 .side2{
 	display: grid;
-	background-color: #eaf9ff;
 }
 
 .profilepic{
