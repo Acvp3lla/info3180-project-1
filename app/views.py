@@ -29,31 +29,6 @@ from time import strftime
 def home():
     """Render website's home page."""
     return render_template('home.html')
-
-
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    form = LoginForm()
-    if request.method == "POST" and form.validate_on_submit():
-        
-        # change this to actually validate the entire form submission
-        # and not just one field
-        username=form.username.data
-        password=form.password.data;
-        user=UserProfile.query.filter_by(username=username,password=password).first()
-            
-            
-        if user is not None:
-            login_user(user)
-            
-            return redirect(url_for('securepage'))
-            
-        else:
-            flash('ERROR GET AWAY','danger')
-            return redirect(url_for("home")) 
-            
-    flash_errors(form)           
-    return render_template("login.html", form=form)
     
 @app.route("/profile", methods=["GET", "POST"])
 def createuser():
@@ -65,24 +40,21 @@ def createuser():
         uid = random.randint(1,1000)
         firstname = form.firstname.data
         lastname = form.lastname.data
-        age= form.age.data
-        gender=form.gender.data
-        bio=form.bio.data
-        username = form.username.data
-        password=form.password.data
-        file=request.files['image']
-        image=secure_filename(file.filename)
-        created_on=datetime.now().strftime("%a, %d %b %Y")
+        gender = form.gender.data
+        email = form.email.data
+        location = form.location.data
+        bio = form.bio.data
+        file = request.files['image']
+        image = secure_filename(file.filename)
+        created_on = datetime.now().strftime("%a %d %b %Y")
         file.save(os.path.join("app/static/images",image))
-        user=UserProfile(uid,firstname,lastname,age,gender,bio,username,password,image,created_on)
+        user = UserProfile(uid, firstname, lastname, gender, email, location, bio, image, created_on)
         db.session.add(user)
         db.session.commit()
-            
         
         flash('USER CREATED SUCESSFULLY', 'success')
         
         return redirect(url_for('createuser')) 
-                
     flash_errors(form)           
     return render_template('createuser.html', form=form)
     
@@ -101,7 +73,6 @@ def about():
     return render_template('about.html')
 
 @app.route('/securepage/')
-@login_required
 def securepage():
     return render_template('securepage.html')
 
@@ -128,22 +99,15 @@ def profile(uid):
     user=UserProfile.query.filter_by(uid=uid).first()
     img=url_for('static',filename='images/'+ user.image)
     if request.headers['Content-Type']=='application/json' or request.method=="POST":
-        return jsonify(uid=user.uid,username=user.username,age=user.age,gender=user.gender,bio=user.bio,password=user.password,image=user.image,created_on=user.created_on)
+        return jsonify(uid = user.uid, firstname = user.firstname, lastname = user.lastname, gender=user.gender,email = user.email, location = user.location, bio=user.bio, image=user.image,created_on=user.created_on)
     else:
-        data={'uid':user.uid,'firstname':user.firstname,'lastname':user.lastname,'username':user.username,'age':user.age,'gender':user.gender,'bio':user.bio,'password':user.password,'image':img,'created_on':user.created_on}
+        data={'uid':user.uid,'firstname':user.firstname,'lastname':user.lastname,'gender':user.gender,'bio':user.bio, 'email':user.email, 'location':user.location ,'image':img,'created_on':user.created_on}
         return render_template('profile.html',data=data)
         
         
     
     """Render website's profile page."""
     return render_template('profile.html')
-    
-@app.route('/logout/')
-@login_required
-def logout():
-    logout_user()
-    """Render the website's profile page."""
-    return redirect (url_for('home') )
 
 
 @login_manager.user_loader

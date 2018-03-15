@@ -1,17 +1,40 @@
 {% extends "base.html" %}
 
 {% block main %}
-<ul>
+<div>
+    <h2>Profiles</h2>
+</div>
+<div class="userlist">
 {% for user in user %}
-<li>
-<a href="/profile/{{user.uid}}", method="post">
-    {{user.uid}}
-    {{user.username}}
-</a>
-
-</li>
+    <div class="outer">
+        <div class="side1">
+            <div class="profilepic">
+                <img class="img-responsive" src=" {{url_for('static', filename= 'images/' + user.image)}}" height="125" width="150" alt = "image upload" >
+            </div>
+        </div>
+        <div class="side2">
+            <div class="name">
+                {{user.firstname}}
+                {{user.lastname}}
+            </div>
+    
+            <div class="gender">
+                <img class="img-responsive" src=" {{url_for('static', filename='person.png')}}" height="19" width="19" alt = "person icon" >
+                {{user.gender}}
+            </div>
+            
+            <div class="location">
+                <img class="img-responsive" src=" {{url_for('static', filename='location.png')}}" height="19" width="19" alt = "location icon" >
+                {{user.location}}
+            </div>
+            
+            <div class="btn">
+            <a href="/profile/{{user.uid}}", method="post"><button>View Profile</button></a>
+            </div>
+        </div>
+    </div>
 {% endfor %}
-</ul>
+</div>
 
 
 {% endblock %}

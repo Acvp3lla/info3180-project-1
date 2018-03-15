@@ -11,7 +11,7 @@ class UserProfile(db.Model):
     image=db.Column(db.LargeBinary)
     created_on=db.Column(db.DateTime)
     
-    def __init__(self, uid, firstname, lastname, age, gender, bio, username, password,image, created_on):
+    def __init__(self, uid, firstname, lastname, gender, email, location, bio, image, created_on):
         self.uid=uid
         self.firstname=firstname
         self.lastname=lastname

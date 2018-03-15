@@ -12,7 +12,7 @@ class LoginForm(FlaskForm):
 class CreateUserForm(FlaskForm):
     firstname = StringField('Firstname', validators=[InputRequired()])
     lastname = StringField('Lastname', validators=[InputRequired()])
-    gender = SelectField('Gender', choices = [('S','Select Gender'),('M','Male'),('F','Female')])
+    gender = SelectField('Gender', choices = [('Select','Select Gender'),('Male','Male'),('Female','Female')])
     email = StringField("Email",[validators.Required("(Required)"), validators.Email("(Required)")])
     location = StringField("Location",[validators.Required("(Required)")])
     bio = TextAreaField('Bio', validators=[InputRequired()])
