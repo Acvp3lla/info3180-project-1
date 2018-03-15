@@ -40,7 +40,7 @@ hr{
 	grid-template-columns: 1fr 1fr;
     position: relative;
 	border-radius: 5px;
-	border-width: 5px;
+	border-width: 10px;
 	border-color: rgb(0, 0, 0, 0.8);
 	border-style: solid;
 	background-color: #eaf9ff;
@@ -59,7 +59,7 @@ hr{
 	display: grid;
 	grid-row: 1em;
 	border-radius: 5px;
-	border-width: 5px;
+	border-width: 10px;
 	border-color: rgb(0, 0, 0, 0.8);
 	border-style: solid;
 	background-color: #eaf9ff;
