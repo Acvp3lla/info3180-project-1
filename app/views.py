@@ -33,36 +33,31 @@ def home():
 @app.route("/profile", methods=["GET", "POST"])
 def createuser():
     form = CreateUserForm()
+    error = None
     if request.method == "POST":
-        # change this to actually validate the entire form submission
-        # and not just one field
-        
-        uid = random.randint(1,1000)
-        firstname = form.firstname.data
-        lastname = form.lastname.data
-        gender = form.gender.data
-        email = form.email.data
-        location = form.location.data
-        bio = form.bio.data
-        file = request.files['image']
-        image = secure_filename(file.filename)
-        created_on = datetime.now().strftime("%a %d %b %Y")
-        file.save(os.path.join("app/static/images",image))
-        user = UserProfile(uid, firstname, lastname, gender, email, location, bio, image, created_on)
-        db.session.add(user)
-        db.session.commit()
-        
-        flash('USER CREATED SUCESSFULLY', 'success')
-        
-        return redirect(url_for('createuser')) 
+        if form.validate() == False:
+            flash_errors(form)
+            return redirect(url_for('createuser', error=error)) 
+        else:
+            uid = random.randint(1,1000)
+            firstname = form.firstname.data
+            lastname = form.lastname.data
+            gender = form.gender.data
+            email = form.email.data
+            location = form.location.data
+            bio = form.bio.data
+            file = request.files['image']
+            image = secure_filename(file.filename)
+            created_on = datetime.now().strftime("%a %d %b %Y")
+            file.save(os.path.join("app/static/images",image))
+            user = UserProfile(uid, firstname, lastname, gender, email, location, bio, image, created_on)
+            db.session.add(user)
+            db.session.commit()
+            flash('USER CREATED SUCESSFULLY', 'success')
+            return redirect(url_for('createuser', error=error)) 
     flash_errors(form)           
-    return render_template('createuser.html', form=form)
+    return render_template('createuser.html', form=form, error=error)
     
-def flash_errors(form):
-    for field, errors in form.errors.items():
-        
-        for error in errors:
-            flash(u"Error in the %s field - %s" % (getattr(form, field).label.text,error), 'danger')    
     
 
 
@@ -117,6 +112,16 @@ def load_user(uid):
 ###
 # The functions below should be applicable to all Flask apps.
 ###
+
+# Flash errors from the form if validation fails
+def flash_errors(form):
+    for field, errors in form.errors.items():
+        for error in errors:
+            flash(u"Error in the %s - %s" % (
+                getattr(form, field).label.text,
+                error
+), 'danger')
+
 
 @app.route('/<file_name>.txt')
 def send_text_file(file_name):
