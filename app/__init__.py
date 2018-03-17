@@ -1,6 +1,4 @@
 from flask import Flask
-import os
-import psycopg2
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 
