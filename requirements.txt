@@ -15,5 +15,5 @@ psycopg2
 WTForms==2.1
 psycopg2-binary
 Pipfile
-python-2.7.14
+
 
