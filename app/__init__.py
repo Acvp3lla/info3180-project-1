@@ -10,9 +10,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://luciano:password@localhost
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True # added just to suppress a warning
 
 
-DATABASE_URL = os.environ['DATABASE_URL']
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
 db = SQLAlchemy(app)
 
 # Flask-Login login manager
