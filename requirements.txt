@@ -16,4 +16,3 @@ WTForms==2.1
 psycopg2-binary
 Pipfile
 
-
