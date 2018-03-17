@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://luciano:password@localhost
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True # added just to suppress a warning
 
 
-DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = os.environ['postgres://ikvjrhcxwgavte:81034d0ca3b4fdfa4ca15262835bfc4b7a1842ff4f0eaa00921319182255f758@ec2-54-163-246-193.compute-1.amazonaws.com:5432/daab9q8cgh9h2a']
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 db = SQLAlchemy(app)
