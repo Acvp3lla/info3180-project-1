@@ -13,5 +13,5 @@ Flask-Login
 Flask-Script
 psycopg2
 WTForms==2.1
-
+psycopg2-binary
 
