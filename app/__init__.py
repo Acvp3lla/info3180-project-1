@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://luciano:password@localhost
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True # added just to suppress a warning
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['postgres://mbmqpbvauuqttt:4fcab97e61da14b4b2d52a64346bb3dfaaef1e063bf26fd5b9cfaeff81c4ce89@ec2-50-17-206-214.compute-1.amazonaws.com:5432/dfruam3ori6b22']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['postgresql://mbmqpbvauuqttt:4fcab97e61da14b4b2d52a64346bb3dfaaef1e063bf26fd5b9cfaeff81c4ce89@ec2-50-17-206-214.compute-1.amazonaws.com:5432/dfruam3ori6b22']
 
 db = SQLAlchemy(app)
 
