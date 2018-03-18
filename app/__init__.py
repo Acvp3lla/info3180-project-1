@@ -9,13 +9,13 @@ app.config['SECRET_KEY'] = "+h1$1$@r@nd0ms3cr3tk3y"
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://luciano:password@localhost/thedatabase"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True # added just to suppress a warning
 
-HEROKU_POSTGRESQL_RED_URL='postgresql://ikvjrhcxwgavte:81034d0ca3b4fdfa4ca15262835bfc4b7a1842ff4f0eaa00921319182255f758@ec2-54-163-246-193.compute-1.amazonaws.com:5432/daab9q8cgh9h2a'
+DATABASE_URL='postgresql://gwswplkarpwspj:360fa7639ce174b794a3648c51d99d31045366b0b9899ea04f4906f6872cbd5e@ec2-54-243-185-195.compute-1.amazonaws.com:5432/d59607sinom6t5'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['HEROKU_POSTGRESQL_RED_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 
 db = SQLAlchemy(app)
 
-conn = psycopg2.connect(HEROKU_POSTGRESQL_RED_URL, sslmode='require')
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 # Flask-Login login manager
 login_manager = LoginManager()
