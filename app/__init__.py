@@ -12,11 +12,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True # added just to suppress a w
 DATABASE_URL='postgres://gwswplkarpwspj:360fa7639ce174b794a3648c51d99d31045366b0b9899ea04f4906f6872cbd5e@ec2-54-243-185-195.compute-1.amazonaws.com:5432/d59607sinom6t5'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-
-db = SQLAlchemy(app)
-
 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
+db = SQLAlchemy(app)
 # Flask-Login login manager
 login_manager = LoginManager()
 login_manager.init_app(app)
