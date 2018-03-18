@@ -16,10 +16,6 @@ from werkzeug import secure_filename
 from datetime import date, datetime
 from time import strftime
 
-
-
-
-
 ###
 # Routing for your application.
 ###

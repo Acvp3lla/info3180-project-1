@@ -158,3 +158,9 @@ hr{
 	grid-row-gap: 2px;
 	position: relative;
 }
+
+.logo{
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr;
+}
