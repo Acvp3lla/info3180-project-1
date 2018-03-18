@@ -13,7 +13,7 @@ DATABASE_URL='postgresql://gwswplkarpwspj:360fa7639ce174b794a3648c51d99d31045366
 
 #os.environ[DATABASE_URL]
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
-#conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 db = SQLAlchemy(app)
 
