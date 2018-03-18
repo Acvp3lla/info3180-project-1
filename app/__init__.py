@@ -2,8 +2,8 @@ from flask import Flask
 import os
 import psycopg2
 from flask_login import LoginManager
-#from flask_sqlalchemy import SQLAlchemy
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "+h1$1$@r@nd0ms3cr3tk3y"
