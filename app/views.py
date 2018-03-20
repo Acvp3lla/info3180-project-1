@@ -70,10 +70,9 @@ def securepage():
 
     
 @app.route('/profiles/', methods=["GET", "POST"])
-
 def profiles():
     user=db.session.query(UserProfile).all()
-    if request.headers['Content-Type']=='application/json' or request.method=="POST":
+    if request.method=="POST":
         mylist=[]
         for user in user:
             mylist.append({'username': user.username,'userid': user.uid})
@@ -88,7 +87,7 @@ def profiles():
 def profile(uid):
     user=UserProfile.query.filter_by(uid=uid).first()
     img=url_for('static',filename='images/'+ user.image)
-    if request.headers['Content-Type']=='application/json' or request.method=="POST":
+    if request.method=="POST":
         return jsonify(uid = user.uid, firstname = user.firstname, lastname = user.lastname, gender=user.gender,email = user.email, location = user.location, bio=user.bio, image=user.image,created_on=user.created_on)
     else:
         data={'uid':user.uid,'firstname':user.firstname,'lastname':user.lastname,'gender':user.gender,'bio':user.bio, 'email':user.email, 'location':user.location ,'image':img,'created_on':user.created_on}
