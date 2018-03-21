@@ -35,6 +35,14 @@ hr{
 	grid-row-gap: 1em;
 }
 
+.tet{
+	display: grid;
+	grid-template-columns: repeat(2,.09fr);
+}
+.tetlogo{
+	margin-top: 20px;
+}
+
 .outer{
 	display: grid;
 	grid-template-columns: 1fr 1fr;
